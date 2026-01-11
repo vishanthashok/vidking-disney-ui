@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VidKing+ (Demo)</title>
+  <meta name="description" content="A Disney+ style demo UI using Vidking embed player." />
+  <link rel="icon" href="favicon.png" /> <!-- optional -->
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <!-- Background glow -->
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brandMark">V+</div>
+      <div class="brandText">
+        <div class="brandTitle">VidKing+</div>
+        <div class="brandSub">demo</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <button class="navItem isActive" data-route="home">
+        <span class="navDot"></span> Home
+      </button>
+      <button class="navItem" data-route="movies">
+        <span class="navDot"></span> Movies
+      </button>
+      <button class="navItem" data-route="tv">
+        <span class="navDot"></span> TV
+      </button>
+      <button class="navItem" data-route="continue">
+        <span class="navDot"></span> Continue
+      </button>
+    </nav>
+
+    <div class="sidebarFooter">
+      <div class="tiny">Powered by Vidking embed</div>
+      <div class="tiny">Static demo for Netlify</div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <!-- Top bar -->
+    <header class="topbar">
+      <div class="topLeft">
+        <button class="hamburger" aria-label="Toggle sidebar">☰</button>
+        <div class="pageTitle" id="pageTitle">Home</div>
+      </div>
+
+      <div class="topRight">
+        <div class="searchWrap">
+          <input id="searchInput" class="search" placeholder="Search titles..." autocomplete="off" />
+          <div class="searchHint" id="searchHint">Try “tv” or “movie”</div>
+        </div>
+        <button class="pill" id="colorToggle" title="Toggle accent color">Accent</button>
+        <div class="avatar" title="Profile">VA</div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="heroOverlay"></div>
+      <div class="heroContent">
+        <div class="heroEyebrow">Featured</div>
+        <h1 class="heroTitle" id="heroTitle">The Last of Us</h1>
+        <p class="heroDesc" id="heroDesc">
+          Click Play to open the Vidking embed player. This is a static UI demo you can deploy to Netlify.
+        </p>
+
+        <div class="heroActions">
+          <button class="btnPrimary" id="heroPlay">▶ Play</button>
+          <button class="btnGhost" id="heroInfo">More Info</button>
+        </div>
+
+        <div class="heroMeta" id="heroMeta">
+          <span class="tag">TV</span>
+          <span class="tag">TMDB: 119051</span>
+          <span class="tag">S1 · E8</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rails -->
+    <section class="rails" id="rails"></section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="tiny">Demo UI only — content is loaded via Vidking iframe URLs.</div>
+    </footer>
+  </main>
+
+  <!-- Player Modal -->
+  <div class="modal" id="playerModal" aria-hidden="true" role="dialog" aria-label="Player">
+    <div class="modalBackdrop" id="modalBackdrop"></div>
+
+    <div class="modalCard">
+      <div class="modalTop">
+        <div class="modalTitleWrap">
+          <div class="modalTitle" id="modalTitle">Now Playing</div>
+          <div class="modalSub" id="modalSub">—</div>
+        </div>
+
+        <div class="modalActions">
+          <button class="pill" id="resumeBtn" title="Resume from saved progress">Resume</button>
+          <button class="pill" id="copyLinkBtn" title="Copy embed URL">Copy URL</button>
+          <button class="closeBtn" id="closeModal" aria-label="Close">✕</button>
+        </div>
+      </div>
+
+      <div class="playerWrap">
+        <iframe
+          id="playerFrame"
+          title="Vidking Player"
+          src=""
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          frameborder="0"
+          referrerpolicy="no-referrer"
+        ></iframe>
+      </div>
+
+      <div class="progressBarWrap">
+        <div class="progressLabel">
+          <span>Progress</span>
+          <span id="progressText">0%</span>
+        </div>
+        <div class="progressBar">
+          <div class="progressFill" id="progressFill" style="width:0%"></div>
+        </div>
+
+        <div class="tiny mono" id="messageArea">Waiting for player events…</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
